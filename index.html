@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山形の裏名物＊ままづぁま汁☆ by ありがとう - クックパッド</title>
+    <style>
+        /* ===== クックパッド風リセット・基本スタイル ===== */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7; /* 全体の背景は少しグレー */
+            color: #333;
+            font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        a { text-decoration: none; color: #0066cc; }
+        ul, ol { margin: 0; padding: 0; list-style: none; }
+        h1, h2, h3, p { margin: 0; }
+
+        /* ヘッダー（ダミー） */
+        .cookpad-header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cookpad-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff7f00; /* クックパッドオレンジ */
+            letter-spacing: -1px;
+        }
+
+        /* メインコンテナ */
+        .container {
+            width: 960px; /* PC版の標準的な幅 */
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        /* レシピヘッダー部分 */
+        .recipe-header {
+            margin-bottom: 25px;
+        }
+        h1.recipe-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8fc31f; /* クックパッドグリーン */
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .recipe-author {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        .author-name {
+            color: #0066cc;
+            font-weight: bold;
+        }
+        
+        /* レシピのキャッチコピーと画像エリア */
+        .recipe-main-area {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px dotted #ccc;
+            padding-bottom: 20px;
+        }
+        .recipe-image-placeholder {
+            width: 300px;
+            height: 300px;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #aaa;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 20px;
+            border: 1px solid #ddd;
+        }
+        .recipe-description {
+            flex: 1;
+        }
+        .description-text {
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        /* 意味深なメッセージを少し強調 */
+        .important-message {
+            font-weight: bold;
+            color: #ff7f00;
+        }
+
+        /* 材料セクション */
+        .ingredients-section {
+            margin-bottom: 40px;
+            border: 1px solid #e5e5e5;
+            padding: 15px;
+            background-color: #fbfbfb;
+        }
+        h2.section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8fc31f;
+            margin-bottom: 15px;
+            border-left: 5px solid #8fc31f;
+            padding-left: 10px;
+            line-height: 1.2;
+        }
+        .servings {
+            font-size: 12px;
+            color: #666;
+            font-weight: normal;
+            margin-left: 10px;
+        }
+        .ingredient-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dotted #ccc;
+            font-size: 15px;
+        }
+        .ingredient-name {
+            flex: 1;
+        }
+        .ingredient-amount {
+            color: #666;
+        }
+
+        /* 作り方セクション */
+        .steps-section {
+            margin-bottom: 40px;
+        }
+        .step-list li {
+            margin-bottom: 25px;
+            display: flex;
+        }
+        .step-number {
+            background-color: #ff7f00;
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .step-text {
+            flex: 1;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .step-text h3 {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* つくれぽセクション */
+        .tsukurepo-section {
+            border-top: 2px solid #8fc31f;
+            padding-top: 20px;
+            margin-bottom: 40px;
+        }
+        .tsukurepo-message {
+            background-color: #fff4e5; /* 薄いオレンジ背景 */
+            border: 1px solid #ffcc99;
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ff7f00;
+        }
+        .tsukurepo-count {
+            font-size: 20px;
+        }
+
+        /* フッター（ダミー） */
+        .cookpad-footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cookpad-header">
+        <div class="cookpad-logo">cookpad</div>
+    </div>
+
+    <div class="container">
+        <div class="recipe-header">
+            <h1 class="recipe-title">山形の裏名物＊ままづぁま汁☆</h1>
+            <div class="recipe-author">
+                by <span class="author-name">ありがとう</span>
+            </div>
+        </div>
+
+        <div class="recipe-main-area">
+            <div class="recipe-image-placeholder">
+                <span>写真</span>
+            </div>
+            <div class="recipe-description">
+                <p class="description-text">
+                    山形県の郷土料理！とってもおいしい「ままづぁま汁」のレシピです。<br>
+                    <span class="important-message">絶対にアレンジせずこの通りに作ってくださいね</span>（その方がおいしいですよ）
+                </p>
+            </div>
+        </div>
+
+        <div class="ingredients-section">
+            <h2 class="section-title">材料<span class="servings">（2人前）</span></h2>
+            <ul class="ingredient-list">
+                <li>
+                    <span class="ingredient-name">豚バラ肉（薄切り）</span>
+                    <span class="ingredient-amount">300g</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">レンコン</span>
+                    <span class="ingredient-amount">200g</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">里芋</span>
+                    <span class="ingredient-amount">200g</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">ねぎ</span>
+                    <span class="ingredient-amount">1本</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">醤油</span>
+                    <span class="ingredient-amount">大さじ5</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">酒</span>
+                    <span class="ingredient-amount">大さじ4</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">みりん</span>
+                    <span class="ingredient-amount">大さじ4</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">和風だし</span>
+                    <span class="ingredient-amount">小さじ山盛り1</span>
+                </li>
+                <li>
+                    <span class="ingredient-name">ごま油</span>
+                    <span class="ingredient-amount">大さじ1</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="steps-section">
+            <h2 class="section-title">作り方</h2>
+            <ol class="step-list">
+                <li>
+                    <div class="step-number">1</div>
+                    <div class="step-text">
+                        <h3>下ごしらえ</h3>
+                        <p>里芋は皮をむき、一口大に切って塩もみ（分量外）してぬめりを取り、下茹でしておきます。<br>レンコンは皮をむいて乱切りにし、酢水（分量外）にさらします。ねぎは斜め切り、豚バラ肉は食べやすい大きさに切ります。</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-number">2</div>
+                    <div class="step-text">
+                        <h3>炒める</h3>
+                        <p>鍋にごま油を熱し、豚バラ肉を炒めます。肉の色が変わったら、水気を切ったレンコンと下茹でした里芋を加えて、油が回るまで炒め合わせます。</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-number">3</div>
+                    <div class="step-text">
+                        <h3>煮込む</h3>
+                        <p>水（分量外・具材がかぶるくらい、約400~500ml目安）を加え、煮立ったらアクを取ります。<br>酒、みりん、和風だしを加え、落とし蓋をして中火で15分ほど煮込みます。</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="step-number">4</div>
+                    <div class="step-text">
+                        <h3>味付けと仕上げ</h3>
+                        <p>野菜が柔らかくなったら醤油を加え、さらに10分ほど煮ます。<br>最後にねぎを加えてひと煮立ちさせ、味が染みたら完成です。一度冷ますとより味が染みます。</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="tsukurepo-section">
+            <h2 class="section-title">つくれぽ（みんなのつくりましたフォトレポート）</h2>
+            <div class="tsukurepo-message">
+                たべレポ<span class="tsukurepo-count">10件</span>ありがとうございます！おいしかったら拡散してくださいね
+            </div>
+        </div>
+
+    </div> <div class="cookpad-footer">
+        Copyright© Cookpad Inc. All Rights Reserved.
+    </div>
+
+</body>
+</html>
