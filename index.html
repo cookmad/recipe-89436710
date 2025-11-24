@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>山形の裏名物＊ままづぁま汁☆ by ありがとう - クックパッド</title>
     <style>
-        /* ===== クックパッド風スタイル（微調整版） ===== */
+        /* ===== クックパッド風スタイル（たべレポ横並び・コメント付き版） ===== */
         body {
             margin: 0;
             padding: 0;
@@ -19,7 +19,7 @@
         ul, ol { margin: 0; padding: 0; list-style: none; }
         h1, h2, h3, p { margin: 0; }
 
-        /* ヘッダー（ダミー） */
+        /* ヘッダー */
         .cookpad-header {
             background-color: #fff;
             border-bottom: 1px solid #ddd;
@@ -30,7 +30,7 @@
         .cookpad-logo {
             font-size: 24px;
             font-weight: bold;
-            color: #ff7f00; /* ロゴオレンジ */
+            color: #ff7f00;
             letter-spacing: -1px;
             font-family: arial, sans-serif;
         }
@@ -45,7 +45,7 @@
             box-sizing: border-box;
         }
 
-        /* レシピヘッダー部分 */
+        /* レシピヘッダー */
         .recipe-header {
             margin-bottom: 15px;
             border-bottom: 1px dotted #ccc;
@@ -54,7 +54,7 @@
         h1.recipe-title {
             font-size: 24px;
             font-weight: bold;
-            color: #8fc31f; /* タイトルグリーン */
+            color: #8fc31f;
             margin-bottom: 10px;
             line-height: 1.3;
         }
@@ -72,7 +72,7 @@
             font-weight: bold;
         }
 
-        /* シェアボタン風装飾 */
+        /* シェアボタン */
         .share-buttons {
             display: flex;
             gap: 5px;
@@ -89,7 +89,7 @@
         .btn-fb { background-color: #1877f2; }
         .btn-line { background-color: #06c755; }
         
-        /* レシピのキャッチコピーと画像エリア */
+        /* レシピメインエリア */
         .recipe-main-area {
             display: flex;
             margin-top: 20px;
@@ -109,6 +109,11 @@
             margin-right: 20px;
             border: 1px solid #ddd;
             flex-shrink: 0;
+        }
+        .recipe-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .recipe-description {
             flex: 1;
@@ -157,9 +162,6 @@
         .ingredient-list li:last-child {
             border-bottom: none;
         }
-        .ingredient-name {
-            flex: 1;
-        }
         .ingredient-amount {
             color: #666;
             font-weight: bold;
@@ -190,15 +192,14 @@
             flex: 1;
             font-size: 15px;
             line-height: 1.6;
-            padding-top: 4px; /* 数字との位置合わせ */
+            padding-top: 4px;
         }
-        /* 最後のステップの強調 */
         .last-step-message {
             font-weight: bold;
             color: #555;
         }
 
-        /* たべレポセクション */
+        /* === たべレポセクション（横並びカード型） === */
         .taberepo-section {
             margin-top: 50px;
             border-top: 2px solid #8fc31f;
@@ -224,33 +225,83 @@
             margin-left: 10px;
             font-weight: bold;
         }
-        .taberepo-list {
+        
+        /* 横並びコンテナ */
+        .taberepo-list-grid {
             display: flex;
-            gap: 10px;
-            overflow: hidden;
-        }
-        .taberepo-item {
-            width: 100px;
-            text-align: center;
-        }
-        .taberepo-img {
-            width: 100px;
-            height: 100px;
-            background-color: #f0f0f0;
-            margin-bottom: 5px;
-            border: 1px solid #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ccc;
-            font-size: 10px;
-        }
-        .taberepo-user {
-            font-size: 11px;
-            color: #0066cc;
+            flex-wrap: wrap; /* 折り返しあり */
+            gap: 20px; /* アイテム間の隙間 */
         }
 
-        /* フッター（ダミー） */
+        /* 個別のカード */
+        .taberepo-card {
+            width: 215px; /* 1行に4つ並ぶくらいの幅 */
+            background-color: #fff;
+            border: 1px solid #eee;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ユーザー情報と画像 */
+        .card-header {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .card-img {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            color: #aaa;
+            flex-shrink: 0;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-user {
+            font-size: 11px;
+            color: #0066cc;
+            font-weight: bold;
+            word-break: break-all;
+        }
+
+        /* コメント部分 */
+        .card-comment {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            flex: 1; /* 高さ揃えのため */
+        }
+
+        /* 返信部分 */
+        .card-reply {
+            background-color: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #666;
+            line-height: 1.4;
+            margin-top: auto; /* 下に寄せる */
+        }
+        .reply-label {
+            color: #8fc31f;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* フッター */
         .cookpad-footer {
             text-align: center;
             padding: 20px;
@@ -298,42 +349,15 @@
             <h2 class="section-title">材料<span class="servings">（2人前）</span></h2>
             <div class="ingredient-box">
                 <ul class="ingredient-list">
-                    <li>
-                        <span class="ingredient-name">豚バラ肉（薄切り）</span>
-                        <span class="ingredient-amount">300g</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">レンコン</span>
-                        <span class="ingredient-amount">200g</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">里芋</span>
-                        <span class="ingredient-amount">200g</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">ねぎ</span>
-                        <span class="ingredient-amount">1本</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">醤油</span>
-                        <span class="ingredient-amount">大さじ5</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">酒</span>
-                        <span class="ingredient-amount">大さじ4</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">みりん</span>
-                        <span class="ingredient-amount">大さじ4</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">和風だし</span>
-                        <span class="ingredient-amount">小さじ山盛り1</span>
-                    </li>
-                    <li>
-                        <span class="ingredient-name">ごま油</span>
-                        <span class="ingredient-amount">大さじ1</span>
-                    </li>
+                    <li><span class="ingredient-name">豚バラ肉（薄切り）</span><span class="ingredient-amount">300g</span></li>
+                    <li><span class="ingredient-name">レンコン</span><span class="ingredient-amount">200g</span></li>
+                    <li><span class="ingredient-name">里芋</span><span class="ingredient-amount">200g</span></li>
+                    <li><span class="ingredient-name">ねぎ</span><span class="ingredient-amount">1本</span></li>
+                    <li><span class="ingredient-name">醤油</span><span class="ingredient-amount">大さじ5</span></li>
+                    <li><span class="ingredient-name">酒</span><span class="ingredient-amount">大さじ4</span></li>
+                    <li><span class="ingredient-name">みりん</span><span class="ingredient-amount">大さじ4</span></li>
+                    <li><span class="ingredient-name">和風だし</span><span class="ingredient-amount">小さじ山盛り1</span></li>
+                    <li><span class="ingredient-name">ごま油</span><span class="ingredient-amount">大さじ1</span></li>
                 </ul>
             </div>
         </div>
@@ -343,33 +367,23 @@
             <ol class="step-list">
                 <li>
                     <div class="step-number">1</div>
-                    <div class="step-text">
-                        里芋は皮をむいて一口大に切り、下茹でしてぬめりを取ります。レンコンは乱切り、ねぎは斜め切り、豚肉は食べやすい大きさに切ります。
-                    </div>
+                    <div class="step-text">里芋は皮をむいて一口大に切り、下茹でしてぬめりを取ります。レンコンは乱切り、ねぎは斜め切り、豚肉は食べやすい大きさに切ります。</div>
                 </li>
                 <li>
                     <div class="step-number">2</div>
-                    <div class="step-text">
-                        鍋にごま油を熱して豚肉を炒めます。肉の色が変わったら、レンコンと里芋を加えて、油が全体に回るまでよく炒め合わせます。
-                    </div>
+                    <div class="step-text">鍋にごま油を熱して豚肉を炒めます。肉の色が変わったら、レンコンと里芋を加えて、油が全体に回るまでよく炒め合わせます。</div>
                 </li>
                 <li>
                     <div class="step-number">3</div>
-                    <div class="step-text">
-                        具材がかぶるくらいの水を加え、煮立ったらアクを取ります。酒、みりん、和風だしを加え、落とし蓋をして中火で15分ほど煮込みます。
-                    </div>
+                    <div class="step-text">具材がかぶるくらいの水を加え、煮立ったらアクを取ります。酒、みりん、和風だしを加え、落とし蓋をして中火で15分ほど煮込みます。</div>
                 </li>
                 <li>
                     <div class="step-number">4</div>
-                    <div class="step-text">
-                        野菜が柔らかくなったら醤油を加え、さらに10分煮ます。最後にねぎを加えてひと煮立ちさせ、味が染みたら完成です。
-                    </div>
+                    <div class="step-text">野菜が柔らかくなったら醤油を加え、さらに10分煮ます。最後にねぎを加えてひと煮立ちさせ、味が染みたら完成です。</div>
                 </li>
                 <li>
                     <div class="step-number">5</div>
-                    <div class="step-text last-step-message">
-                        たべレポ10件ありがとうございます！おいしかったら拡散してくださいね
-                    </div>
+                    <div class="step-text last-step-message">たべレポ10件ありがとうございます！おいしかったら拡散してくださいね</div>
                 </li>
             </ol>
         </div>
@@ -379,26 +393,61 @@
                 <div class="taberepo-title">たべレポ（みんなのつくりましたフォトレポート）</div>
                 <div class="taberepo-count">10件</div>
             </div>
-            <div class="taberepo-list">
-                <div class="taberepo-item">
-                    <div class="taberepo-img">写真</div>
-                    <div class="taberepo-user">ユーザーA</div>
+
+            <div class="taberepo-list-grid">
+                
+                <div class="taberepo-card">
+                    <div class="card-header">
+                        <div class="card-img">写真</div>
+                        <div class="card-user">ユーザーA</div>
+                    </div>
+                    <div class="card-comment">
+                        初めて作りましたが、不思議と懐かしい味がしました。家族も無言で完食してくれました。リピ決定です！
+                    </div>
+                    <div class="card-reply">
+                        <span class="reply-label">ありがとう</span>
+                        作ってくれてありがとうございます。余計な味付けはしていませんか？それが大事です。
+                    </div>
                 </div>
-                <div class="taberepo-item">
-                    <div class="taberepo-img">写真</div>
-                    <div class="taberepo-user">ユーザーB</div>
+
+                <div class="taberepo-card">
+                    <div class="card-header">
+                        <div class="card-img">写真</div>
+                        <div class="card-user">ユーザーB</div>
+                    </div>
+                    <div class="card-comment">
+                        指示通りに作りました。お肉が柔らかくて美味しかったです。
+                    </div>
+                    <div class="card-reply">
+                        <span class="reply-label">ありがとう</span>
+                        よかったです。次はもっと友達に広めてくださいね。
+                    </div>
                 </div>
-                <div class="taberepo-item">
-                    <div class="taberepo-img">写真</div>
-                    <div class="taberepo-user">ユーザーC</div>
+
+                <div class="taberepo-card">
+                    <div class="card-header">
+                        <div class="card-img">写真</div>
+                        <div class="card-user">ユーザーC</div>
+                    </div>
+                    <div class="card-comment">
+                        里芋がほくほくで最高！子供もパクパク食べてくれました。
+                    </div>
+                    <div class="card-reply">
+                        <span class="reply-label">ありがとう</span>
+                        お子さんも食べたんですか？そうですか。
+                    </div>
                 </div>
-                <div class="taberepo-item">
-                    <div class="taberepo-img">写真</div>
-                    <div class="taberepo-user">ユーザーD</div>
+
+                 <div class="taberepo-card">
+                    <div class="card-header">
+                        <div class="card-img">写真</div>
+                        <div class="card-user">ユーザーD</div>
+                    </div>
+                    <div class="card-comment">
+                        簡単なのに本格的な味！ごま油の香りが食欲をそそりますね。
+                    </div>
                 </div>
-                <div class="taberepo-item" style="display:flex; align-items:center; justify-content:center; width:100px; color:#999; font-size:11px;">
-                    もっと見る >
-                </div>
+
             </div>
         </div>
 
