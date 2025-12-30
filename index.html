@@ -332,6 +332,55 @@
             border-top: 1px solid #ddd;
             margin-top: 40px;
         }
+/* ========== スマホ用レスポンシブ設定 ========== */
+        @media screen and (max-width: 768px) {
+            /* 本体：幅を固定せず、画面いっぱいにする */
+            .container {
+                width: 100%;
+                padding: 15px;
+                border-left: none;
+                border-right: none;
+            }
+
+            /* レシピヘッダー：縦並びにする */
+            .recipe-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            /* メインエリア（写真と説明文）：縦並びにする */
+            .recipe-main-area {
+                flex-direction: column;
+            }
+            .recipe-image-placeholder {
+                width: 100%; /* 横幅いっぱい */
+                height: auto;
+                aspect-ratio: 1 / 1; /* 正方形を維持 */
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            /* 作り方：画像を見やすく調整 */
+            .step-list li {
+                flex-wrap: wrap; /* 折り返しを許可 */
+            }
+            .step-image {
+                width: 100%; /* 画像を大きく表示 */
+                height: auto;
+                aspect-ratio: 4/3;
+                margin-left: 0;
+                margin-top: 10px; /* テキストの下に配置 */
+                /* step-numberの左マージン分（47px）を考慮してインデントしたい場合は以下 */
+                margin-left: 47px; 
+                width: calc(100% - 47px);
+            }
+            
+            /* タイトル文字サイズ調整 */
+            h1.recipe-title {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
