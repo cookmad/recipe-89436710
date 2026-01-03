@@ -76,11 +76,11 @@
             cursor: pointer;    /* マウスカーソルを指にする */
         }
 
-        /* ホバー時に表示するアイコン画像 */
+        /* ホバー時に表示するアイコン画像本体 */
         .author-popup-image {
             display: none;        /* 最初は隠しておく */
             position: absolute;   /* 文字に対して絶対配置 */
-            top: 30px;            /* 文字の下に表示 */
+            top: 35px;            /* 文字の下に表示（ツノの分少し下げる） */
             left: 50%;            /* 左右中央配置の基準 */
             transform: translateX(-50%); /* 中央揃え */
             width: 120px;         /* アイコンサイズ */
@@ -434,9 +434,9 @@
             <h1 class="recipe-title">山形名物＊ままだま煮☆</h1>
             <div class="recipe-meta">
                 <div class="recipe-author">
-                    by <span class="author-name">
+                    by <span class="author-name" onclick="">
                         とうかいりん
-                        <img src="cookmad/icon.jpg.jpg" class="author-popup-image" alt="投稿者アイコン">
+                        <img src="cookmad/icon.jpg.jpg" class="author-popup-image" alt="とうかいりん">
                     </span>
                     <span style="margin-left: 10px; font-size: 11px; color: #999;">2014年2月20日 投稿</span>
                 </div>
