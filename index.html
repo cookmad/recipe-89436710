@@ -67,9 +67,35 @@
             font-size: 12px;
             color: #666;
         }
+        
+        /* 投稿者名（ホバー用設定追加） */
         .author-name {
             color: #0066cc;
             font-weight: bold;
+            position: relative; /* アイコン表示の基準位置 */
+            cursor: pointer;    /* マウスカーソルを指にする */
+        }
+
+        /* ホバー時に表示するアイコン画像 */
+        .author-popup-image {
+            display: none;        /* 最初は隠しておく */
+            position: absolute;   /* 文字に対して絶対配置 */
+            top: 30px;            /* 文字の下に表示 */
+            left: 50%;            /* 左右中央配置の基準 */
+            transform: translateX(-50%); /* 中央揃え */
+            width: 120px;         /* アイコンサイズ */
+            height: 120px;        /* 正円にするため高さも同じに */
+            border-radius: 50%;   /* 丸く切り抜き */
+            object-fit: cover;    /* 画像の歪み防止 */
+            border: 4px solid #fff; /* 白い太枠 */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* 影 */
+            z-index: 100;         /* 手前に表示 */
+            background-color: #eee;
+        }
+
+        /* ホバー時にアイコンを表示 */
+        .author-name:hover .author-popup-image {
+            display: block;
         }
 
         /* シェアボタン */
@@ -394,7 +420,10 @@
             <h1 class="recipe-title">山形名物＊ままだま煮☆</h1>
             <div class="recipe-meta">
                 <div class="recipe-author">
-                    by <span class="author-name">とうかいりん</span>
+                    by <span class="author-name">
+                        とうかいりん
+                        <img src="icon.jpg" class="author-popup-image" alt="とうかいりん">
+                    </span>
                     <span style="margin-left: 10px; font-size: 11px; color: #999;">2014年2月20日 投稿</span>
                 </div>
                 <div class="share-buttons">
@@ -673,7 +702,7 @@
                     });
                 }
 
-                // 3. 日付順にソートする（ここが修正点！）
+                // 3. 日付順にソートする
                 reviewsInMonth.sort((a, b) => a.day - b.day);
 
                 // 4. ソート順にDOM生成してコンテナに追加
@@ -687,7 +716,7 @@
                 currentDate.setMonth(currentDate.getMonth() + 1);
             }
 
-           // 最後に「モモちゃんママ」のコメントを追加（昨日）
+            // 最後に「モモちゃんママ」のコメントを追加（リンク有効化済）
             const lastCard = createReviewCard(
                 "モモちゃんママ",
                 "きのう",
