@@ -68,7 +68,7 @@
             color: #666;
         }
         
-        /* 投稿者名（ホバー用設定追加） */
+        /* 投稿者名（ホバー用設定） */
         .author-name {
             color: #0066cc;
             font-weight: bold;
@@ -76,39 +76,43 @@
             cursor: pointer;    /* マウスカーソルを指にする */
         }
 
-        /* ホバー時に表示するアイコン画像本体 */
-        .author-popup-image {
+        /* ★修正: ポップアップ全体を包む透明な箱（ここにツノと影をつける） */
+        .author-popup-wrapper {
             display: none;        /* 最初は隠しておく */
-            position: absolute;   /* 文字に対して絶対配置 */
-            top: 35px;            /* 文字の下に表示（ツノの分少し下げる） */
-            left: 50%;            /* 左右中央配置の基準 */
+            position: absolute;   /* 絶対配置 */
+            top: 40px;            /* 文字の下に表示 */
+            left: 50%;            /* 左右中央 */
             transform: translateX(-50%); /* 中央揃え */
-            width: 120px;         /* アイコンサイズ */
-            height: 120px;        /* 正円にするため高さも同じに */
+            z-index: 100;
+            /* drop-shadowを使うと、ツノと画像の形に沿って影がつきます */
+            filter: drop-shadow(0 4px 5px rgba(0,0,0,0.3)); 
+        }
+
+        /* ★修正: 画像本体のデザイン */
+        .author-popup-wrapper img {
+            display: block;       /* 隙間対策 */
+            width: 120px;
+            height: 120px;
             border-radius: 50%;   /* 丸く切り抜き */
-            object-fit: cover;    /* 画像の歪み防止 */
+            object-fit: cover;
             border: 4px solid #fff; /* 白い太枠 */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* 影 */
-            z-index: 100;         /* 手前に表示 */
             background-color: #eee;
         }
 
-        /* ★追加: アイコンの上に「ツノ」を付ける */
-        .author-popup-image::before {
+        /* ★修正: ツノ（三角形）を描画 */
+        .author-popup-wrapper::before {
             content: "";
             position: absolute;
-            top: -20px;           /* 本体の枠線(4px)＋ツノの高さ(16px)分上にずらす */
-            left: 50%;            /* 左右中央 */
+            top: -16px;           /* 枠線の上に乗せる位置調整 */
+            left: 50%;
             transform: translateX(-50%);
             border-style: solid;
-            border-width: 0 10px 16px 10px; /* 上0、左右10px、下16pxの三角形 */
-            border-color: transparent transparent #fff transparent; /* 下だけ白、他は透明 */
-            z-index: 101;         /* 本体よりさらに手前に表示 */
-            filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.1)); /* ツノにもうっすら影をつける */
+            border-width: 0 10px 16px 10px; /* 三角形のサイズ */
+            border-color: transparent transparent #fff transparent; /* 色指定 */
         }
 
-        /* ホバー時にアイコンを表示 */
-        .author-name:hover .author-popup-image {
+        /* ホバー時に箱を表示 */
+        .author-name:hover .author-popup-wrapper {
             display: block;
         }
 
@@ -436,7 +440,9 @@
                 <div class="recipe-author">
                     by <span class="author-name" onclick="">
                         とうかいりん
-                        <img src="cookmad/icon.jpg.jpg" class="author-popup-image" alt="とうかいりん">
+                        <span class="author-popup-wrapper">
+                            <img src="cookmad/icon.jpg" alt="とうかいりん">
+                        </span>
                     </span>
                     <span style="margin-left: 10px; font-size: 11px; color: #999;">2014年2月20日 投稿</span>
                 </div>
