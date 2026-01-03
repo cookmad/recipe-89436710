@@ -93,6 +93,20 @@
             background-color: #eee;
         }
 
+        /* ★追加: アイコンの上に「ツノ」を付ける */
+        .author-popup-image::before {
+            content: "";
+            position: absolute;
+            top: -20px;           /* 本体の枠線(4px)＋ツノの高さ(16px)分上にずらす */
+            left: 50%;            /* 左右中央 */
+            transform: translateX(-50%);
+            border-style: solid;
+            border-width: 0 10px 16px 10px; /* 上0、左右10px、下16pxの三角形 */
+            border-color: transparent transparent #fff transparent; /* 下だけ白、他は透明 */
+            z-index: 101;         /* 本体よりさらに手前に表示 */
+            filter: drop-shadow(0 -2px 2px rgba(0,0,0,0.1)); /* ツノにもうっすら影をつける */
+        }
+
         /* ホバー時にアイコンを表示 */
         .author-name:hover .author-popup-image {
             display: block;
