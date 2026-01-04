@@ -68,50 +68,84 @@
             color: #666;
         }
         
-        /* 投稿者名（ホバー用設定） */
+        /* 投稿者名（トリガー部分） */
         .author-name {
             color: #0066cc;
             font-weight: bold;
-            position: relative; /* アイコン表示の基準位置 */
-            cursor: pointer;    /* マウスカーソルを指にする */
+            position: relative; /* ポップアップの基準位置 */
+            cursor: pointer;
         }
 
-        /* ★修正: ポップアップ全体を包む透明な箱（ここにツノと影をつける） */
+        /* ★修正: プロフィールカードの「外箱」 */
         .author-popup-wrapper {
-            display: none;        /* 最初は隠しておく */
+            display: none;        /* 最初は隠す */
             position: absolute;   /* 絶対配置 */
-            top: 40px;            /* 文字の下に表示 */
-            left: 50%;            /* 左右中央 */
-            transform: translateX(-50%); /* 中央揃え */
+            top: 35px;            /* 文字の下 */
+            left: 50%;
+            transform: translateX(-50%); /* 左右中央揃え */
+            width: 260px;         /* カードの幅 */
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;   /* 角丸 */
             z-index: 100;
-            /* drop-shadowを使うと、ツノと画像の形に沿って影がつきます */
-            filter: drop-shadow(0 4px 5px rgba(0,0,0,0.3)); 
+            /* 影をつけて浮き上がらせる（ツノも含めて影がつくfilterを使用） */
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2)); 
+            border: 1px solid #eee;
+            text-align: left;     /* テキストは左揃えに戻す */
         }
 
-        /* ★修正: 画像本体のデザイン */
-        .author-popup-wrapper img {
-            display: block;       /* 隙間対策 */
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;   /* 丸く切り抜き */
-            object-fit: cover;
-            border: 4px solid #fff; /* 白い太枠 */
-            background-color: #eee;
-        }
-
-        /* ★修正: ツノ（三角形）を描画 */
+        /* ★修正: 吹き出しの「ツノ」 */
         .author-popup-wrapper::before {
             content: "";
             position: absolute;
-            top: -16px;           /* 枠線の上に乗せる位置調整 */
+            top: -10px;
             left: 50%;
             transform: translateX(-50%);
             border-style: solid;
-            border-width: 0 10px 16px 10px; /* 三角形のサイズ */
-            border-color: transparent transparent #fff transparent; /* 色指定 */
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent #fff transparent;
         }
 
-        /* ホバー時に箱を表示 */
+        /* ★追加: カードの中身（レイアウト） */
+        .popup-inner {
+            display: flex;        /* 横並びにする */
+            align-items: center;  /* 上下中央揃え */
+        }
+
+        /* ★追加: アイコン画像 */
+        .popup-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            margin-right: 15px;   /* テキストとの間隔 */
+            flex-shrink: 0;       /* 画像が潰れないようにする */
+        }
+
+        /* ★追加: テキスト情報のデザイン */
+        .popup-text {
+            flex: 1;
+        }
+        .popup-username {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .popup-user-rank {
+            font-size: 11px;
+            color: #d4af37; /* ゴールド */
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .popup-user-stats {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* ホバー時にカードを表示 */
         .author-name:hover .author-popup-wrapper {
             display: block;
         }
@@ -440,9 +474,16 @@
                 <div class="recipe-author">
                     by <span class="author-name" onclick="">
                         とうかいりん
-                        <span class="author-popup-wrapper">
-                            <img src="cookmad/icon.jpg" alt="とうかいりん">
-                        </span>
+                        <div class="author-popup-wrapper">
+                            <div class="popup-inner">
+                                <img src="cookmad/icon.jpg" class="popup-icon" alt="とうかいりん">
+                                <div class="popup-text">
+                                    <div class="popup-username">とうかいりん</div>
+                                    <div class="popup-user-rank">👑プレミアム会員</div>
+                                    <div class="popup-user-stats">投稿レシピ数：22</div>
+                                </div>
+                            </div>
+                        </div>
                     </span>
                     <span style="margin-left: 10px; font-size: 11px; color: #999;">2014年2月20日 投稿</span>
                 </div>
