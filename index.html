@@ -412,7 +412,7 @@
             margin-top: 40px;
         }
 /* ========== スマホ用レスポンシブ設定 ========== */
-        @media screen and (max-width: 768px) {
+      @media screen and (max-width: 768px) {
             /* 本体：幅を固定せず、画面いっぱいにする */
             .container {
                 width: 100%;
@@ -458,6 +458,16 @@
             /* タイトル文字サイズ調整 */
             h1.recipe-title {
                 font-size: 20px;
+            }
+
+            /* ★修正: スマホでのプロフィールカード位置調整 */
+            .author-popup-wrapper {
+                left: -10px;       /* 中央揃えをやめて、文字の左端に合わせる（微調整込） */
+                transform: none;   /* 中央揃え解除 */
+            }
+            .author-popup-wrapper::before {
+                left: 40px;        /* ツノの位置だけ、文字の真下に来るように右にずらす */
+                transform: translateX(-50%);
             }
         }
     </style>
